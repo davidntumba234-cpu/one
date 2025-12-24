@@ -1,34 +1,135 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-.App-header {
-    background-color: #0f0f10;
+/* App-specific styles */
+.App {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
 }
 
-.App-link {
-    color: #61dafb;
+/* Hero section styles */
+.hero-bg {
+    background-image: linear-gradient(to bottom, rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.9)),
+        url('https://images.pexels.com/photos/8728559/pexels-photo-8728559.jpeg?auto=compress&cs=tinysrgb&w=1920');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Service cards hover effect */
+.service-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    border-color: hsl(var(--primary) / 0.5);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1);
+    color: hsl(var(--primary));
+}
+
+/* Testimonial card styles */
+.testimonial-card {
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    border-color: hsl(var(--primary) / 0.3);
+}
+
+/* Button styles */
+.btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 h-12 px-8 rounded-full font-medium transition-all hover:scale-105 active:scale-95;
+    box-shadow: 0 0 20px -5px rgba(56, 189, 248, 0.5);
+}
+
+.btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 h-12 px-8 rounded-full font-medium border border-white/5 transition-all;
+}
+
+.btn-outline {
+    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 px-8 rounded-full transition-all;
+}
+
+/* Section spacing */
+.section-padding {
+    @apply py-24 md:py-32;
+}
+
+/* Container */
+.container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Form styles */
+.form-input {
+    @apply bg-secondary/50 border-white/10 focus:border-primary focus:ring-primary/20 rounded-xl;
+}
+
+/* Map container */
+.map-container {
+    @apply rounded-2xl overflow-hidden border border-white/10;
+}
+
+/* Founder card */
+.founder-card {
+    @apply relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition-all duration-500;
+}
+
+.founder-card:hover {
+    border-color: hsl(var(--primary) / 0.5);
+}
+
+/* Value card */
+.value-card {
+    @apply p-8 rounded-3xl border border-white/10 bg-white/5 hover:border-primary/30 transition-all duration-300;
+}
+
+/* Stats */
+.stat-item {
+    @apply text-center p-6;
+}
+
+.stat-number {
+    @apply text-4xl md:text-5xl font-bold text-primary;
+}
+
+.stat-label {
+    @apply text-muted-foreground mt-2;
+}
+
+/* Navigation active state */
+.nav-link {
+    @apply relative text-muted-foreground hover:text-foreground transition-colors;
+}
+
+.nav-link.active {
+    @apply text-primary;
+}
+
+.nav-link.active::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+    @apply fixed inset-0 bg-black/80 backdrop-blur-sm z-50;
+}
+
+/* Gradient border */
+.gradient-border {
+    position: relative;
+}
+
+.gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
 }
