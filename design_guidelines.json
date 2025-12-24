@@ -1,0 +1,144 @@
+{
+  "identity": {
+    "name": "Neuronova",
+    "tagline": "L'Innovation Technologique au Cœur de l'Afrique",
+    "mission": "Propulser les entreprises africaines vers le futur grâce à l'IA, la cybersécurité et le design digital.",
+    "tone": "Futuristic, Professional, Bold, African-Rooted",
+    "archetype": "The Visionary Architect"
+  },
+  "typography": {
+    "primary_font": "Clash Display",
+    "secondary_font": "Manrope",
+    "scale": {
+      "h1": "text-5xl md:text-7xl font-semibold tracking-tight",
+      "h2": "text-4xl md:text-5xl font-medium tracking-tight",
+      "h3": "text-2xl md:text-3xl font-medium",
+      "body": "text-base md:text-lg leading-relaxed text-muted-foreground",
+      "caption": "text-sm font-mono uppercase tracking-widest text-primary/80"
+    },
+    "import_instructions": "Import 'Clash Display' and 'Manrope' from Google Fonts or local assets. If Clash Display is unavailable, use 'Outfit'."
+  },
+  "colors": {
+    "theme": "dark",
+    "palette": {
+      "background": "#020617",
+      "foreground": "#F8FAFC",
+      "primary": "#38BDF8",
+      "primary_foreground": "#020617",
+      "secondary": "#1E293B",
+      "secondary_foreground": "#F8FAFC",
+      "accent": "#F59E0B",
+      "accent_foreground": "#020617",
+      "muted": "#0F172A",
+      "muted_foreground": "#94A3B8",
+      "border": "#1E293B",
+      "input": "#1E293B",
+      "ring": "#38BDF8"
+    },
+    "gradients": {
+      "hero": "bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-amber-500/20",
+      "card_hover": "hover:bg-gradient-to-br hover:from-slate-800 hover:to-slate-900",
+      "text_gradient": "bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-blue-300"
+    }
+  },
+  "visual_enhancers": {
+    "textures": "Use subtle noise overlays (opacity 0.03) on solid backgrounds to avoid 'plastic' feel.",
+    "patterns": "Integrate geometric circuit-board patterns inspired by African textiles (Kente/Mudcloth) but digitized. Use SVG backgrounds with low opacity.",
+    "glassmorphism": "backdrop-blur-xl bg-black/40 border border-white/10",
+    "borders": "1px solid border-white/10. On hover: border-primary/50 transition-colors duration-300."
+  },
+  "layout_strategies": {
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "spacing": {
+      "section_gap": "py-24 md:py-32",
+      "element_gap": "gap-6 md:gap-12"
+    },
+    "grids": {
+      "bento": "grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[minmax(200px,auto)]",
+      "features": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-primary-foreground hover:bg-primary/90 h-12 px-8 rounded-full font-medium transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_-5px_rgba(56,189,248,0.5)]",
+      "secondary": "bg-secondary text-secondary-foreground hover:bg-secondary/80 h-12 px-8 rounded-full font-medium border border-white/5",
+      "outline": "border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 px-8 rounded-full"
+    },
+    "cards": {
+      "service_card": "group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 hover:border-primary/50 transition-all duration-500",
+      "testimonial_card": "bg-slate-900/50 border border-slate-800 p-6 rounded-2xl"
+    },
+    "navigation": {
+      "style": "floating-glass",
+      "classes": "fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl rounded-full border border-white/10 bg-black/60 backdrop-blur-md z-50 px-6 py-4 flex items-center justify-between shadow-2xl"
+    }
+  },
+  "motion": {
+    "library": "framer-motion",
+    "scroll": "lenis",
+    "animations": {
+      "fade_up": {
+        "initial": { "opacity": 0, "y": 20 },
+        "whileInView": { "opacity": 1, "y": 0 },
+        "viewport": { "once": true },
+        "transition": { "duration": 0.5, "ease": "easeOut" }
+      },
+      "stagger_children": {
+        "container": {
+          "hidden": { "opacity": 0 },
+          "show": {
+            "opacity": 1,
+            "transition": { "staggerChildren": 0.1 }
+          }
+        },
+        "item": {
+          "hidden": { "opacity": 0, "y": 20 },
+          "show": { "opacity": 1, "y": 0 }
+        }
+      }
+    }
+  },
+  "images": {
+    "hero_bg": {
+      "url": "https://images.pexels.com/photos/8728559/pexels-photo-8728559.jpeg",
+      "alt": "Futuristic African Cityscape",
+      "usage": "Hero section background with heavy dark overlay (bg-black/70)"
+    },
+    "team_meeting": {
+      "url": "https://images.pexels.com/photos/10107709/pexels-photo-10107709.jpeg",
+      "alt": "Neuronova Team Strategy Meeting",
+      "usage": "About page, Vision section"
+    },
+    "diverse_team": {
+      "url": "https://images.pexels.com/photos/7550402/pexels-photo-7550402.jpeg",
+      "alt": "Diverse Tech Team",
+      "usage": "Careers or Team section"
+    },
+    "ai_abstract": {
+      "url": "https://images.pexels.com/photos/34337249/pexels-photo-34337249.jpeg",
+      "alt": "Neural Network Visualization",
+      "usage": "Services section (AI Agents)"
+    },
+    "founders": {
+      "jordan": "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg",
+      "david": "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg",
+      "note": "These are placeholders. Replace with real photos if available."
+    }
+  },
+  "instructions_to_main_agent": [
+    "INSTALL: npm install framer-motion @studio-freight/react-lenis lucide-react clsx tailwind-merge",
+    "SETUP: Configure Tailwind for dark mode class strategy.",
+    "FONTS: Add 'Clash Display' and 'Manrope' to index.css via @import or font-face.",
+    "COMPONENTS: Use Shadcn for complex interactive elements (Dialog, Form, Select) but style them to match the 'Neuronova' dark theme.",
+    "PAGES: Create Home, Services, About, Contact pages as requested.",
+    "WHATSAPP: Implement a floating WhatsApp button (fixed bottom-right) with z-index 50.",
+    "TESTING: Add data-testid to all interactive elements."
+  ],
+  "universal_guidelines": [
+    "Do not use gradients for text unless it's a very large heading.",
+    "Ensure all text has sufficient contrast (APCA/WCAG AA).",
+    "Use 'gap' property for spacing, avoid margins where possible.",
+    "Mobile-first: Always design for mobile (grid-cols-1) then scale up (md:grid-cols-2).",
+    "Avoid 'Lorem Ipsum'. Use realistic tech copy related to Neuronova's mission."
+  ]
+}
