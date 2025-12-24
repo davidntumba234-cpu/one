@@ -1,5 +1,7 @@
 import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin, ArrowUp } from "lucide-react";
 
+const NEURONOVA_LOGO = "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/1rt013g6_file_00000000871c71f79e6e1c736e9fbdf8.png";
+
 const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
   { icon: Linkedin, href: "#", label: "LinkedIn" },
@@ -30,9 +32,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <span className="text-white font-bold text-xl">N</span>
-              </div>
+              <img 
+                src={NEURONOVA_LOGO} 
+                alt="Neuronova Logo" 
+                className="w-12 h-12"
+              />
               <div>
                 <span className="font-bold text-xl text-white block">Neuronova</span>
                 <span className="text-xs text-primary tracking-wider">Tech. Intelligence. Afrique.</span>
