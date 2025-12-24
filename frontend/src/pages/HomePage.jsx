@@ -465,46 +465,83 @@ export default function HomePage() {
       </section>
 
       {/* ==================== AVAILABILITY SECTION ==================== */}
-      <section className="py-12 bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10 border-y border-white/5">
-        <div className="container-custom">
+      <section className="py-12 relative overflow-hidden">
+        {/* Animated gradient background */}
+        <motion.div 
+          animate={{ 
+            background: [
+              "linear-gradient(90deg, rgba(56,189,248,0.1) 0%, rgba(245,158,11,0.05) 50%, rgba(56,189,248,0.1) 100%)",
+              "linear-gradient(90deg, rgba(245,158,11,0.05) 0%, rgba(56,189,248,0.1) 50%, rgba(245,158,11,0.05) 100%)",
+              "linear-gradient(90deg, rgba(56,189,248,0.1) 0%, rgba(245,158,11,0.05) 50%, rgba(56,189,248,0.1) 100%)"
+            ]
+          }}
+          transition={{ duration: 5, repeat: Infinity }}
+          className="absolute inset-0"
+        />
+        <div className="absolute inset-0 border-y border-white/5" />
+        
+        <div className="container-custom relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="flex flex-col md:flex-row items-center justify-between gap-6"
           >
-            <div className="flex items-center gap-4">
+            <motion.div 
+              className="flex items-center gap-4"
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
               <div className="relative">
-                <div className="w-4 h-4 rounded-full bg-green-500 animate-pulse" />
-                <div className="absolute inset-0 w-4 h-4 rounded-full bg-green-500 animate-ping" />
+                <div className="w-4 h-4 rounded-full bg-green-500" />
+                <motion.div 
+                  animate={{ scale: [1, 1.5, 1], opacity: [0.7, 0, 0.7] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="absolute inset-0 w-4 h-4 rounded-full bg-green-500"
+                />
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-white">Disponible 24/7</h3>
                 <p className="text-slate-400 text-sm">Support et consultation disponibles</p>
               </div>
-            </div>
+            </motion.div>
             <div className="flex items-center gap-6">
-              <div className="text-center">
-                <CheckCircle2 className="w-8 h-8 text-green-500 mx-auto mb-1" />
-                <p className="text-slate-400 text-xs">Devis Gratuit</p>
-              </div>
-              <div className="text-center">
-                <CheckCircle2 className="w-8 h-8 text-green-500 mx-auto mb-1" />
-                <p className="text-slate-400 text-xs">Réponse 24h</p>
-              </div>
-              <div className="text-center">
-                <CheckCircle2 className="w-8 h-8 text-green-500 mx-auto mb-1" />
-                <p className="text-slate-400 text-xs">Projets Urgents</p>
-              </div>
+              {[
+                { label: "Devis Gratuit" },
+                { label: "Réponse 24h" },
+                { label: "Projets Urgents" }
+              ].map((item, i) => (
+                <motion.div 
+                  key={item.label}
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.2 }}
+                  className="text-center"
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.2, rotate: 10 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <CheckCircle2 className="w-8 h-8 text-green-500 mx-auto mb-1" />
+                  </motion.div>
+                  <p className="text-slate-400 text-xs">{item.label}</p>
+                </motion.div>
+              ))}
             </div>
-            <Button 
-              onClick={() => window.open('https://wa.me/243846378116', '_blank')}
-              className="bg-green-600 hover:bg-green-700 text-white h-12 px-8 rounded-full"
-              data-testid="availability-cta"
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <Phone size={18} className="mr-2" />
-              Appeler Maintenant
-            </Button>
+              <Button 
+                onClick={() => window.open('https://wa.me/243846378116', '_blank')}
+                className="bg-green-600 hover:bg-green-700 text-white h-12 px-8 rounded-full shadow-lg shadow-green-500/25"
+                data-testid="availability-cta"
+              >
+                <Phone size={18} className="mr-2" />
+                Appeler Maintenant
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </section>
