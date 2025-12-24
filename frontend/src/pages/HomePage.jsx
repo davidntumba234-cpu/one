@@ -815,7 +815,7 @@ export default function HomePage() {
             >
               <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-8 border border-white/10">
                 <img 
-                  src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src="https://images.pexels.com/photos/5060987/pexels-photo-5060987.jpeg?auto=compress&cs=tinysrgb&w=600"
                   alt="Jordan Leko"
                   className="founder-image w-full h-full object-cover"
                 />
