@@ -312,140 +312,308 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen noise-overlay" data-testid="home-page">
-      {/* ==================== HERO SECTION ==================== */}
+      {/* ==================== HERO SECTION - PREMIUM DIGITAL AGENCY ==================== */}
       <section 
         id="hero" 
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
         data-testid="hero-section"
       >
-        {/* Background Image with Parallax */}
+        {/* Deep dark background with gradient */}
+        <div className="absolute inset-0 bg-[#030712]" />
+        
+        {/* Binary code pattern overlay */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='0' y='30' fill='%2338BDF8' font-family='monospace' font-size='10'%3E01001101%3C/text%3E%3Ctext x='0' y='50' fill='%2338BDF8' font-family='monospace' font-size='10'%3E10110010%3C/text%3E%3C/svg%3E")`,
+            backgroundSize: '60px 60px'
+          }} />
+        </div>
+        
+        {/* Animated glow orbs */}
         <motion.div 
-          style={{ y: heroY }}
-          className="absolute inset-0"
-        >
-          <img 
-            src="https://images.pexels.com/photos/8728559/pexels-photo-8728559.jpeg?auto=compress&cs=tinysrgb&w=1920"
-            alt="Futuristic African City"
-            className="w-full h-[120%] object-cover"
-          />
-          <div className="absolute inset-0 hero-gradient" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-        </motion.div>
-
-        {/* Animated Glow */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/20 blur-[150px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/10 blur-[120px]" />
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{ duration: 4, repeat: Infinity }}
+          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/20 blur-[150px]"
+        />
+        <motion.div 
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+            opacity: [0.2, 0.4, 0.2]
+          }}
+          transition={{ duration: 5, repeat: Infinity }}
+          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/15 blur-[120px]"
+        />
+        <motion.div 
+          animate={{ 
+            x: [-50, 50, -50],
+            y: [-30, 30, -30]
+          }}
+          transition={{ duration: 8, repeat: Infinity }}
+          className="absolute top-1/3 right-1/3 w-[300px] h-[300px] rounded-full bg-blue-600/10 blur-[100px]"
+        />
 
         {/* Content */}
-        <motion.div 
-          style={{ opacity: heroOpacity }}
-          className="container-custom relative z-10 text-center pt-24"
-        >
-          {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-8"
-          >
-            <img 
-              src={NEURONOVA_LOGO} 
-              alt="Neuronova Logo" 
-              className="w-48 h-48 md:w-64 md:h-64 mx-auto drop-shadow-2xl"
-              data-testid="hero-logo"
-            />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-medium mb-6 backdrop-blur-sm">
-              <Sparkles size={16} className="animate-pulse" />
-              Fondée en 2025 à Kinshasa, RDC
-            </span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="heading-cinematic text-white mb-4"
-            data-testid="hero-title"
-          >
-            NEURONOVA
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-2xl md:text-4xl font-light text-white/80 mb-4"
-          >
-            <span className="gradient-text font-semibold">Tech.</span>{" "}
-            <span className="text-white">Intelligence.</span>{" "}
-            <span className="text-accent">Afrique.</span>
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="text-sm uppercase tracking-widest text-slate-400 mb-8"
-          >
-            INNOVATE THE FUTURE
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-12 leading-relaxed"
-          >
-            Nous propulsons les entreprises africaines vers le futur grâce à l'IA, 
-            la cybersécurité, le design digital et 60+ solutions technologiques sur mesure.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-wrap justify-center gap-4"
-          >
-            <Button 
-              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-              className="btn-primary text-lg"
-              data-testid="discover-btn"
+        <div className="container-custom relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Text content */}
+            <motion.div 
+              style={{ opacity: heroOpacity }}
+              className="text-left"
             >
-              Découvrir nos services
-              <ArrowRight size={20} className="ml-2" />
-            </Button>
-            <Button 
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="btn-secondary text-lg"
-              data-testid="contact-btn"
-            >
-              Nous contacter
-            </Button>
-          </motion.div>
+              {/* Logo */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: 0.8, type: "spring" }}
+                className="mb-8"
+              >
+                <img 
+                  src={NEURONOVA_LOGO} 
+                  alt="Neuronova Logo" 
+                  className="w-32 h-32 drop-shadow-2xl"
+                  data-testid="hero-logo"
+                />
+              </motion.div>
 
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-12 border-t border-white/10"
-          >
-            {stats.map((stat, i) => (
-              <div key={i} className="stat-item" data-testid={`stat-${i}`}>
-                <div className="stat-number">{stat.value}</div>
-                <div className="stat-label">{stat.label}</div>
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-medium mb-6 backdrop-blur-sm">
+                  <motion.span
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  >
+                    <Sparkles size={16} />
+                  </motion.span>
+                  Digital Agency Premium • Kinshasa, RDC
+                </span>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 leading-[0.9]"
+                data-testid="hero-title"
+              >
+                NEURO
+                <span className="block gradient-text">NOVA</span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="text-xl md:text-2xl text-white/60 mb-2 font-light tracking-wide"
+              >
+                Tech. Intelligence. Afrique.
+              </motion.p>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="text-sm uppercase tracking-[0.3em] text-primary/80 mb-8"
+              >
+                INNOVATE THE FUTURE
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.7 }}
+                className="text-lg text-slate-400 max-w-lg mb-10 leading-relaxed"
+              >
+                Agence digitale premium spécialisée en IA, développement web, 
+                cybersécurité et design. 60+ solutions technologiques pour 
+                propulser votre entreprise.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="flex flex-wrap gap-4"
+              >
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button 
+                    onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="btn-primary text-lg h-14 px-8"
+                    data-testid="discover-btn"
+                  >
+                    Découvrir nos services
+                    <ArrowRight size={20} className="ml-2" />
+                  </Button>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button 
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="btn-secondary text-lg h-14 px-8"
+                    data-testid="contact-btn"
+                  >
+                    Nous contacter
+                  </Button>
+                </motion.div>
+              </motion.div>
+
+              {/* Stats inline */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1 }}
+                className="flex gap-8 mt-12 pt-8 border-t border-white/10"
+              >
+                {stats.map((stat, i) => (
+                  <motion.div 
+                    key={i} 
+                    className="text-left"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1 + i * 0.1 }}
+                  >
+                    <div className="text-3xl md:text-4xl font-bold gradient-text">{stat.value}</div>
+                    <div className="text-slate-500 text-xs uppercase tracking-wider">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Right side - Floating devices mockup */}
+            <motion.div 
+              className="relative hidden lg:block"
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            >
+              {/* Main laptop/device showcase */}
+              <div className="relative">
+                {/* Glow behind devices */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-3xl scale-90" />
+                
+                {/* Main showcase image */}
+                <motion.div
+                  animate={{ y: [-10, 10, -10] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative"
+                >
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/3ztmkhox_AI%20-%20Watch%20mockup.jpeg"
+                    alt="Premium Device Mockup"
+                    className="w-full rounded-2xl shadow-2xl shadow-primary/20 border border-white/10"
+                  />
+                </motion.div>
+
+                {/* Floating iPhone 1 */}
+                <motion.div
+                  animate={{ 
+                    y: [-15, 15, -15],
+                    rotate: [-5, 5, -5]
+                  }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -left-12 top-1/4 w-40"
+                >
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/klxn1ey4_Affiche%20de%20pub.jpeg"
+                    alt="Mobile App"
+                    className="w-full rounded-xl shadow-xl shadow-black/50 border border-white/10"
+                  />
+                </motion.div>
+
+                {/* Floating iPhone 2 */}
+                <motion.div
+                  animate={{ 
+                    y: [15, -15, 15],
+                    rotate: [5, -5, 5]
+                  }}
+                  transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -right-8 bottom-1/4 w-36"
+                >
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/qpah6lby_Social%20media%20para%20Banco%20Digital___Gostou%20do%20resultado_%20Me%20conta%20nos%20coment%C3%A1rios%21__Link%20do%20projeto%20completo%20na%20bio%21__%23socialmedia%20%23socialmediapost%20%23banco%20%23bancodigital%20%23bank%20%23design%20%23graphicdesign%20%23postdesign%20%23brand%20%23.jpeg"
+                    alt="Banking App"
+                    className="w-full rounded-xl shadow-xl shadow-black/50 border border-white/10"
+                  />
+                </motion.div>
+
+                {/* Floating 3D icons */}
+                <motion.div
+                  animate={{ 
+                    y: [-20, 20, -20],
+                    x: [-10, 10, -10],
+                    rotate: [0, 360]
+                  }}
+                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                  className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-[#31A8FF] to-[#001E36] rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30"
+                >
+                  <span className="text-white font-bold text-xl">Ps</span>
+                </motion.div>
+
+                <motion.div
+                  animate={{ 
+                    y: [20, -20, 20],
+                    x: [10, -10, 10],
+                    rotate: [360, 0]
+                  }}
+                  transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                  className="absolute bottom-0 left-0 w-14 h-14 bg-gradient-to-br from-[#FF9A00] to-[#FF0000] rounded-xl flex items-center justify-center shadow-lg shadow-orange-500/30"
+                >
+                  <span className="text-white font-bold text-lg">Ai</span>
+                </motion.div>
+
+                <motion.div
+                  animate={{ 
+                    y: [-15, 15, -15],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute top-1/2 -left-20 w-12 h-12 bg-gradient-to-br from-[#9999FF] to-[#2D0060] rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/30"
+                >
+                  <span className="text-white font-bold text-sm">Ae</span>
+                </motion.div>
+
+                <motion.div
+                  animate={{ 
+                    y: [10, -10, 10],
+                    rotate: [-10, 10, -10]
+                  }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute top-1/3 right-1/4 w-10 h-10 bg-gradient-to-br from-primary to-blue-700 rounded-lg flex items-center justify-center shadow-lg shadow-primary/30"
+                >
+                  <Code size={20} className="text-white" />
+                </motion.div>
+
+                {/* Glowing particles */}
+                {[...Array(6)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    animate={{ 
+                      y: [Math.random() * 50 - 25, Math.random() * 50 - 25],
+                      x: [Math.random() * 50 - 25, Math.random() * 50 - 25],
+                      opacity: [0.3, 0.8, 0.3]
+                    }}
+                    transition={{ 
+                      duration: 3 + Math.random() * 2, 
+                      repeat: Infinity,
+                      delay: i * 0.5
+                    }}
+                    className="absolute w-2 h-2 rounded-full bg-primary"
+                    style={{
+                      top: `${20 + i * 15}%`,
+                      left: `${10 + i * 12}%`,
+                      filter: 'blur(1px)'
+                    }}
+                  />
+                ))}
               </div>
-            ))}
-          </motion.div>
-        </motion.div>
+            </motion.div>
+          </div>
+        </div>
 
         {/* Scroll Indicator */}
         <motion.div
@@ -456,10 +624,15 @@ export default function HomePage() {
         >
           <button 
             onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-            className="flex flex-col items-center gap-2 text-slate-400 hover:text-primary transition-colors"
+            className="flex flex-col items-center gap-2 text-slate-500 hover:text-primary transition-colors"
           >
             <span className="text-xs uppercase tracking-widest">Scroll</span>
-            <ChevronDown size={24} className="scroll-indicator" />
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              <ChevronDown size={24} />
+            </motion.div>
           </button>
         </motion.div>
       </section>
