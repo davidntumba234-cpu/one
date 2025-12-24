@@ -345,6 +345,52 @@ const galleryImages = [
   },
 ];
 
+// FAQ Item Component
+function FAQItem({ faq, index }) {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      className="rounded-xl border border-white/10 overflow-hidden"
+      data-testid={`faq-item-${index}`}
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between p-6 text-left bg-slate-900/50 hover:bg-slate-900/80 transition-colors"
+      >
+        <h3 className="text-lg font-medium text-white pr-4">{faq.question}</h3>
+        <motion.div
+          animate={{ rotate: isOpen ? 45 : 0 }}
+          transition={{ duration: 0.2 }}
+          className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center"
+        >
+          <Plus size={18} className="text-primary" />
+        </motion.div>
+      </button>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            <div className="p-6 pt-0 bg-slate-900/30">
+              <p className="text-slate-400 leading-relaxed">{faq.answer}</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
 export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState("web");
   const [contactForm, setContactForm] = useState({ name: "", email: "", phone: "", message: "" });
