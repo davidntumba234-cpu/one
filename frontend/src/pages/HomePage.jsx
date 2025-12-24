@@ -925,15 +925,35 @@ export default function HomePage() {
       </section>
 
       {/* ==================== FOUNDERS SECTION ==================== */}
-      <section id="fondateurs" className="section-padding bg-slate-950/50" data-testid="founders-section">
-        <div className="container-custom">
+      <section id="fondateurs" className="section-padding relative overflow-hidden" data-testid="founders-section">
+        {/* Cinematic background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
+        <motion.div 
+          animate={{ rotate: 360 }}
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/5"
+        />
+        <motion.div 
+          animate={{ rotate: -360 }}
+          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-primary/10"
+        />
+        
+        <div className="container-custom relative">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <span className="subheading">Les Fondateurs</span>
+            <motion.span 
+              className="subheading"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+            >
+              Les Fondateurs
+            </motion.span>
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Les Visionnaires de <span className="gradient-text">Neuronova</span>
             </h2>
@@ -942,58 +962,110 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 max-w-5xl mx-auto">
             {/* David Ntumba */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -100, rotateY: -20 }}
+              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               className="founder-card group"
               data-testid="founder-david"
             >
-              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-8 border border-white/10">
+              <motion.div 
+                className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-8 border border-white/10"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 <img 
                   src={DAVID_PHOTO}
                   alt="David Ntumba"
                   className="founder-image w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                
+                {/* Animated glow */}
+                <motion.div
+                  animate={{ opacity: [0.3, 0.6, 0.3] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                  className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"
+                />
+                
                 <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <p className="text-primary text-sm font-medium mb-2">Co-Fondateur & CEO</p>
-                  <h3 className="text-3xl font-bold text-white">David Ntumba</h3>
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <p className="text-primary text-sm font-medium mb-2">Co-Fondateur & CEO</p>
+                    <h3 className="text-3xl font-bold text-white">David Ntumba</h3>
+                  </motion.div>
                 </div>
-              </div>
-              <p className="text-slate-300 leading-relaxed">
+              </motion.div>
+              <motion.p 
+                className="text-slate-300 leading-relaxed"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+              >
                 Né le <span className="text-primary">22 mai 2006</span>, David est un visionnaire 
                 à l'origine de Neuronova. Spécialiste en entrepreneuriat, marketing digital et 
                 stratégie de croissance, il est le moteur derrière la mission de l'entreprise 
                 de révolutionner le paysage tech africain.
-              </p>
+              </motion.p>
             </motion.div>
 
             {/* Jordan Leko */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: 100, rotateY: 20 }}
+              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               className="founder-card group"
               data-testid="founder-jordan"
             >
-              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-8 border border-white/10">
+              <motion.div 
+                className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-8 border border-white/10"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 <img 
                   src="https://images.pexels.com/photos/5060987/pexels-photo-5060987.jpeg?auto=compress&cs=tinysrgb&w=600"
                   alt="Jordan Leko"
                   className="founder-image w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                
+                {/* Animated glow */}
+                <motion.div
+                  animate={{ opacity: [0.3, 0.6, 0.3] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
+                  className="absolute inset-0 bg-gradient-to-t from-accent/20 to-transparent"
+                />
+                
                 <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <p className="text-accent text-sm font-medium mb-2">Co-Fondateur & CTO</p>
-                  <h3 className="text-3xl font-bold text-white">Jordan Leko</h3>
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <p className="text-accent text-sm font-medium mb-2">Co-Fondateur & CTO</p>
+                    <h3 className="text-3xl font-bold text-white">Jordan Leko</h3>
+                  </motion.div>
                 </div>
-              </div>
-              <p className="text-slate-300 leading-relaxed">
+              </motion.div>
+              <motion.p 
+                className="text-slate-300 leading-relaxed"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+              >
                 Expert en développement logiciel et innovation technologique, Jordan est passionné 
                 par la <span className="text-accent">transformation digitale en Afrique</span>. 
                 Avec plusieurs années d'expérience dans le développement de solutions tech, 
                 il dirige la vision technique de Neuronova.
-              </p>
+              </motion.p>
             </motion.div>
           </div>
         </div>
