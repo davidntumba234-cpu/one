@@ -8,49 +8,49 @@
       "test": "Health Check",
       "success": true,
       "details": "Status: 200, Response: {'status': 'healthy', 'service': 'neuronova-api'}",
-      "timestamp": "2025-12-24T15:39:40.643566"
+      "timestamp": "2025-12-24T16:01:00.420973"
     },
     {
       "test": "Root Endpoint",
       "success": true,
       "details": "Status: 200, Message: Bienvenue sur l'API Neuronova",
-      "timestamp": "2025-12-24T15:39:40.683099"
+      "timestamp": "2025-12-24T16:01:00.463640"
     },
     {
       "test": "Get Services",
       "success": true,
       "details": "Status: 200, Found 6 services with correct IDs",
-      "timestamp": "2025-12-24T15:39:40.724099"
+      "timestamp": "2025-12-24T16:01:00.511826"
     },
     {
       "test": "Get Testimonials",
       "success": true,
       "details": "Status: 200, Found 4 testimonials with correct structure",
-      "timestamp": "2025-12-24T15:39:40.762649"
+      "timestamp": "2025-12-24T16:01:00.573957"
     },
     {
       "test": "Contact Form Submission",
       "success": true,
       "details": "Status: 200, Message: Votre message a \u00e9t\u00e9 envoy\u00e9 avec succ\u00e8s. Nous vous r\u00e9pondrons dans les plus brefs d\u00e9lais.",
-      "timestamp": "2025-12-24T15:39:40.922924"
+      "timestamp": "2025-12-24T16:01:00.618240"
     },
     {
       "test": "Quote Form Submission",
       "success": true,
       "details": "Status: 200, Message: Votre demande de devis a \u00e9t\u00e9 envoy\u00e9e. Notre \u00e9quipe vous contactera sous 24h.",
-      "timestamp": "2025-12-24T15:39:40.992092"
+      "timestamp": "2025-12-24T16:01:00.657649"
     },
     {
       "test": "Contact Form Validation",
       "success": true,
       "details": "Status: 422 (expected 422 for validation error)",
-      "timestamp": "2025-12-24T15:39:41.075908"
+      "timestamp": "2025-12-24T16:01:00.743993"
     },
     {
       "test": "Quote Form Validation",
       "success": true,
       "details": "Status: 422 (expected 422 for validation error)",
-      "timestamp": "2025-12-24T15:39:41.136789"
+      "timestamp": "2025-12-24T16:01:00.822676"
     }
   ]
 }
