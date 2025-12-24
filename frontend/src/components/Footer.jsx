@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin, ArrowUp } from "lucide-react";
 
 const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
@@ -7,37 +6,40 @@ const socialLinks = [
   { icon: Instagram, href: "#", label: "Instagram" },
 ];
 
-const quickLinks = [
-  { name: "Accueil", path: "/" },
-  { name: "Services", path: "/services" },
-  { name: "À propos", path: "/about" },
-  { name: "Contact", path: "/contact" },
-];
-
 const services = [
-  "Création de Sites Web",
-  "Agents IA",
-  "Gadgets Tech",
+  "Développement Web & Mobile",
+  "Intelligence Artificielle",
   "Cybersécurité",
-  "Design & Montage Vidéo",
-  "Coaching Entrepreneurial",
+  "Design & Branding",
+  "Consulting Tech",
+  "Objets Connectés",
 ];
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-muted/50 border-t border-white/10" data-testid="footer">
-      <div className="container-custom py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="relative bg-slate-950 border-t border-white/5" data-testid="footer">
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none" />
+      
+      <div className="container-custom relative py-16 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
-          <div className="space-y-6">
-            <Link to="/" className="flex items-center gap-2" data-testid="footer-logo">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <span className="text-white font-bold text-lg">N</span>
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                <span className="text-white font-bold text-xl">N</span>
               </div>
-              <span className="font-bold text-xl text-foreground">Neuronova</span>
-            </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              L'innovation technologique au coeur de l'Afrique. Nous propulsons les entreprises vers le futur.
+              <div>
+                <span className="font-bold text-xl text-white block">Neuronova</span>
+                <span className="text-xs text-primary tracking-wider">Tech. Intelligence. Afrique.</span>
+              </div>
+            </div>
+            <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-xs">
+              Propulser les entreprises africaines vers le futur grâce à l'innovation technologique.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
@@ -46,9 +48,9 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-secondary/80 transition-all"
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
                   aria-label={social.label}
-                  data-testid={`social-${social.label.toLowerCase()}`}
+                  data-testid={`footer-social-${social.label.toLowerCase()}`}
                 >
                   <social.icon size={18} />
                 </a>
@@ -56,36 +58,35 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Services */}
           <div>
-            <h4 className="font-semibold text-foreground mb-6">Navigation</h4>
+            <h4 className="font-semibold text-white mb-6 text-lg">Services</h4>
             <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                    data-testid={`footer-link-${link.name.toLowerCase().replace(/\s+/g, '-')}`}
+              {services.map((service) => (
+                <li key={service}>
+                  <button
+                    onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="footer-link"
                   >
-                    {link.name}
-                  </Link>
+                    {service}
+                  </button>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Navigation */}
           <div>
-            <h4 className="font-semibold text-foreground mb-6">Nos Services</h4>
+            <h4 className="font-semibold text-white mb-6 text-lg">Navigation</h4>
             <ul className="space-y-3">
-              {services.map((service) => (
-                <li key={service}>
-                  <Link
-                    to="/services"
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+              {['Accueil', 'Services', 'Histoire', 'Mission', 'Fondateurs', 'Contact'].map((item) => (
+                <li key={item}>
+                  <button
+                    onClick={() => document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })}
+                    className="footer-link"
                   >
-                    {service}
-                  </Link>
+                    {item}
+                  </button>
                 </li>
               ))}
             </ul>
@@ -93,18 +94,18 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold text-foreground mb-6">Contact</h4>
+            <h4 className="font-semibold text-white mb-6 text-lg">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground text-sm">
+                <span className="text-slate-400 text-sm">
                   Avenue Colonel Ebeya, Gombe, Kinshasa, RDC
                 </span>
               </li>
               <li>
                 <a
                   href="tel:+243846378116"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors text-sm"
+                  className="flex items-center gap-3 text-slate-400 hover:text-primary transition-colors text-sm"
                   data-testid="footer-phone"
                 >
                   <Phone size={18} className="text-primary flex-shrink-0" />
@@ -114,7 +115,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:contact@neuronova.com"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors text-sm"
+                  className="flex items-center gap-3 text-slate-400 hover:text-primary transition-colors text-sm"
                   data-testid="footer-email"
                 >
                   <Mail size={18} className="text-primary flex-shrink-0" />
@@ -126,20 +127,30 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-sm text-center md:text-left">
+        <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-slate-500 text-sm text-center md:text-left">
             &copy; {new Date().getFullYear()} Neuronova. Tous droits réservés.
           </p>
-          <div className="flex gap-6 text-sm">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+          <div className="flex items-center gap-6 text-sm">
+            <a href="#" className="text-slate-500 hover:text-primary transition-colors">
               Politique de confidentialité
             </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+            <a href="#" className="text-slate-500 hover:text-primary transition-colors">
               Mentions légales
             </a>
           </div>
         </div>
       </div>
+
+      {/* Back to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className="absolute right-8 bottom-8 w-12 h-12 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
+        aria-label="Retour en haut"
+        data-testid="back-to-top"
+      >
+        <ArrowUp size={20} />
+      </button>
     </footer>
   );
 }

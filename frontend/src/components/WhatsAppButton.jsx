@@ -14,16 +14,18 @@ export default function WhatsAppButton() {
     <motion.button
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 1, type: "spring", stiffness: 200 }}
+      transition={{ delay: 2, type: "spring", stiffness: 200 }}
       onClick={handleClick}
-      className="whatsapp-btn fixed bottom-6 right-6 z-50 w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#25D366] hover:bg-[#128C7E] text-white shadow-lg hover:shadow-xl transition-all flex items-center justify-center"
+      className="whatsapp-btn fixed bottom-8 right-8 z-50 w-16 h-16 rounded-full bg-[#25D366] hover:bg-[#128C7E] text-white shadow-2xl transition-all flex items-center justify-center group"
       aria-label="Contacter sur WhatsApp"
       data-testid="whatsapp-button"
     >
-      <MessageCircle size={28} className="md:w-8 md:h-8" />
+      <MessageCircle size={28} className="group-hover:scale-110 transition-transform" />
       
-      {/* Pulse animation */}
-      <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30" />
+      {/* Tooltip */}
+      <span className="absolute right-full mr-4 px-4 py-2 rounded-lg bg-slate-900 text-white text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10">
+        Discuter sur WhatsApp
+      </span>
     </motion.button>
   );
 }
