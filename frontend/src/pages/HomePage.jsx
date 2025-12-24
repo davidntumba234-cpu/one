@@ -159,6 +159,74 @@ const values = [
   { icon: Rocket, title: "Ambition mondiale", desc: "Ancrage local, vision globale" },
 ];
 
+// Testimonials
+const testimonials = [
+  {
+    id: 1,
+    name: "Marie Kabongo",
+    company: "TechStart RDC",
+    role: "CEO",
+    content: "Neuronova a transformé notre présence digitale. Leur équipe a développé un site e-commerce qui a triplé nos ventes en 6 mois. Professionnalisme et créativité au rendez-vous !",
+    rating: 5,
+    image: "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=150"
+  },
+  {
+    id: 2,
+    name: "Patrick Mukendi",
+    company: "FinanceHub Africa",
+    role: "Directeur Technique",
+    content: "L'agent IA développé par Neuronova a révolutionné notre service client. Réponses instantanées 24/7, nos clients sont ravis et notre équipe peut se concentrer sur les cas complexes.",
+    rating: 5,
+    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150"
+  },
+  {
+    id: 3,
+    name: "Sophie Ilunga",
+    company: "EcoVert Kinshasa",
+    role: "Fondatrice",
+    content: "Excellente collaboration sur notre identité visuelle complète. Le branding est moderne et reflète parfaitement nos valeurs environnementales. Je recommande vivement !",
+    rating: 5,
+    image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150"
+  },
+  {
+    id: 4,
+    name: "Jean-Baptiste Lumumba",
+    company: "SecureBank Congo",
+    role: "CISO",
+    content: "L'audit cybersécurité de Neuronova a identifié des failles critiques que nous ignorions. Leur expertise nous a permis de renforcer significativement notre infrastructure.",
+    rating: 5,
+    image: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=150"
+  },
+];
+
+// FAQ Data
+const faqData = [
+  {
+    question: "Quels types de services proposez-vous ?",
+    answer: "Nous proposons plus de 60 services répartis en 6 catégories : Développement Web & Mobile, Intelligence Artificielle, Cybersécurité, Design & Branding, Consulting Tech, et Objets Connectés. Chaque service est personnalisable selon vos besoins spécifiques."
+  },
+  {
+    question: "Combien coûte un projet avec Neuronova ?",
+    answer: "Le coût varie selon la complexité du projet. Nous proposons des devis gratuits et personnalisés. Un site vitrine commence à partir de 500$, une application web sur mesure à partir de 2000$. Contactez-nous pour un devis détaillé."
+  },
+  {
+    question: "Quel est le délai de réalisation d'un projet ?",
+    answer: "Les délais dépendent du type de projet : un site vitrine peut être livré en 2-4 semaines, une application web en 2-3 mois, un projet d'IA en 1-3 mois. Nous établissons un planning détaillé dès le début du projet."
+  },
+  {
+    question: "Proposez-vous un support après la livraison ?",
+    answer: "Oui ! Nous offrons un support technique continu, des maintenances mensuelles, et des mises à jour régulières. Nos forfaits de maintenance commencent à partir de 100$/mois selon les besoins."
+  },
+  {
+    question: "Travaillez-vous avec des clients hors de la RDC ?",
+    answer: "Absolument ! Nous servons des clients dans plus de 30 pays africains. Nos équipes travaillent en remote et nous utilisons des outils de collaboration modernes pour assurer une communication fluide."
+  },
+  {
+    question: "Comment se déroule un projet type ?",
+    answer: "Notre processus comprend : 1) Consultation gratuite, 2) Proposition et devis, 3) Conception et validation, 4) Développement, 5) Tests et révisions, 6) Livraison et formation, 7) Support continu."
+  },
+];
+
 // African Countries with flags (30 countries)
 const africanCountries = [
   { name: "RD Congo", code: "CD", flag: "🇨🇩" },
