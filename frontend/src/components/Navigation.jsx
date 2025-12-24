@@ -11,7 +11,7 @@ const navLinks = [
   { name: "Services", href: "#services" },
   { name: "Histoire", href: "#histoire" },
   { name: "Pays", href: "#pays" },
-  { name: "Équipe", href: "#equipe" },
+  { name: "Fondateurs", href: "#fondateurs" },
   { name: "Contact", href: "#contact" },
 ];
 

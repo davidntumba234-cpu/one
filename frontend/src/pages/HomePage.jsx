@@ -313,7 +313,7 @@ export default function HomePage() {
             <img 
               src={NEURONOVA_LOGO} 
               alt="Neuronova Logo" 
-              className="w-32 h-32 md:w-40 md:h-40 mx-auto drop-shadow-2xl"
+              className="w-48 h-48 md:w-64 md:h-64 mx-auto drop-shadow-2xl"
               data-testid="hero-logo"
             />
           </motion.div>
@@ -832,50 +832,6 @@ export default function HomePage() {
                 il dirige la vision technique de Neuronova.
               </p>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== TEAM SECTION ==================== */}
-      <section id="equipe" className="section-padding" data-testid="team-section">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className="subheading">Notre Équipe</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              L'Équipe <span className="gradient-text">Neuronova</span>
-            </h2>
-            <p className="paragraph max-w-2xl mx-auto">
-              Une équipe de talents passionnés par la technologie et dédiés à votre succès.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {teamMembers.map((member, i) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="text-center group"
-                data-testid={`team-member-${i}`}
-              >
-                <div className="relative aspect-square rounded-2xl overflow-hidden mb-4 border border-white/10 group-hover:border-primary/50 transition-all">
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                  />
-                </div>
-                <h4 className="font-semibold text-white text-sm mb-1">{member.name}</h4>
-                <p className="text-slate-400 text-xs">{member.role}</p>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
