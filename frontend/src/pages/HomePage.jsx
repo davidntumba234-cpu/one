@@ -227,17 +227,53 @@ const teamMembers = [
   },
 ];
 
-// Gallery images - 9 images from user
+// Gallery images - Cinematic showcase
 const galleryImages = [
-  "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/8meg5bvv_CODEVENOM%20Fullstack%20Development%20Wallpaper.jpeg",
-  "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/09k3qlsv_Adobe%20%F0%9F%92%BB.jpeg",
-  "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/uu60iigo_Cybersecurity%20solutions-Cybersecurity%20specialist-Cybersecurity%20consulting%20services_.jpeg",
-  "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/7yldxjzf_t%C3%A9l%C3%A9charger.jpeg",
-  "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/5vkfla0b_%F0%9F%93%8A%20Data-Driven%20Tactics%20That%20Work%20Every%20Time.jpeg",
-  "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/bvx8yhos_Futuristic%20Business%20and%20Branding%20Social%20Media%20Designs.jpeg",
-  "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/hcey4eun_graphic%20designer.jpeg",
-  "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/k0v5kg4l_Looking%20for%20a%20Graphics%20designer__We%20are%20also%20looking%20for%20brands%20that%20want%20to%20present%20themselves%20in%20a%20stylish%20way%21_Design%20that%20actually%20speaks%20for%20your%20brand__How%20did%20you%20like%20this%20concept_.jpeg",
-  "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/q62glo03_Cr%C3%A9ation%20Site%20Web%20Professionnel%20_%20E-commerce%20%26%20Comparateurs%20_%20Nova%20Impact.jpeg",
+  {
+    url: "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/3ztmkhox_AI%20-%20Watch%20mockup.jpeg",
+    title: "AI Smartwatch",
+    category: "IoT & Gadgets"
+  },
+  {
+    url: "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/3xngwtgf_Let%E2%80%99s%20Fuel%20Up%20Digitally%20with%20XSYNERGY%20%F0%9F%9A%80.jpeg",
+    title: "Digital Transformation",
+    category: "Consulting"
+  },
+  {
+    url: "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/qpah6lby_Social%20media%20para%20Banco%20Digital___Gostou%20do%20resultado_%20Me%20conta%20nos%20coment%C3%A1rios%21__Link%20do%20projeto%20completo%20na%20bio%21__%23socialmedia%20%23socialmediapost%20%23banco%20%23bancodigital%20%23bank%20%23design%20%23graphicdesign%20%23postdesign%20%23brand%20%23.jpeg",
+    title: "Digital Banking",
+    category: "App Design"
+  },
+  {
+    url: "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/klxn1ey4_Affiche%20de%20pub.jpeg",
+    title: "CineFlex Streaming",
+    category: "Mobile App"
+  },
+  {
+    url: "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/q302dfe5_t%C3%A9l%C3%A9charger%20%281%29.jpeg",
+    title: "WhatsApp Marketing",
+    category: "Digital Marketing"
+  },
+  {
+    url: "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/8meg5bvv_CODEVENOM%20Fullstack%20Development%20Wallpaper.jpeg",
+    title: "Fullstack Development",
+    category: "Web Dev"
+  },
+  {
+    url: "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/uu60iigo_Cybersecurity%20solutions-Cybersecurity%20specialist-Cybersecurity%20consulting%20services_.jpeg",
+    title: "Cybersecurity",
+    category: "Security"
+  },
+  {
+    url: "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/09k3qlsv_Adobe%20%F0%9F%92%BB.jpeg",
+    title: "Adobe Creative Suite",
+    category: "Design"
+  },
+  {
+    url: "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/q62glo03_Cr%C3%A9ation%20Site%20Web%20Professionnel%20_%20E-commerce%20%26%20Comparateurs%20_%20Nova%20Impact.jpeg",
+    title: "Web Creation",
+    category: "E-commerce"
+  },
 ];
 
 export default function HomePage() {
