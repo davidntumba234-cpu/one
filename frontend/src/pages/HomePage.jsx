@@ -8,7 +8,8 @@ import {
   PenTool, Video, Image, FileText, Camera, Sparkles,
   Users, Target, Lightbulb, BookOpen, TrendingUp, Presentation,
   Watch, Layers, Factory, TestTube, Truck, Home,
-  Send, Loader2, MapPin, Phone, Mail, Star, CheckCircle2
+  Send, Loader2, MapPin, Phone, Mail, Star, CheckCircle2,
+  Quote, ChevronRight, Plus, Minus, Play
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
