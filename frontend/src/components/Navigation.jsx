@@ -1,92 +1,121 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 
 const navLinks = [
-  { name: "Accueil", path: "/" },
-  { name: "Services", path: "/services" },
-  { name: "À propos", path: "/about" },
-  { name: "Contact", path: "/contact" },
+  { name: "Accueil", href: "#hero" },
+  { name: "Services", href: "#services" },
+  { name: "Histoire", href: "#histoire" },
+  { name: "Mission", href: "#mission" },
+  { name: "Fondateurs", href: "#fondateurs" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 100);
+      
+      // Update active section
+      const sections = navLinks.map(link => link.href.replace('#', ''));
+      for (const section of sections.reverse()) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 200) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
+    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
+  const scrollToSection = (href) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
     setIsMobileMenuOpen(false);
-  }, [location]);
+  };
 
   return (
     <>
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className={`fixed top-4 md:top-6 left-1/2 -translate-x-1/2 w-[92%] md:w-[90%] max-w-5xl z-50 transition-all duration-300 ${
-          isScrolled ? "glass shadow-2xl" : "bg-black/40 backdrop-blur-md"
-        } rounded-full border border-white/10 px-3 sm:px-4 md:px-6 py-3 md:py-4`}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled 
+            ? "py-3 glass" 
+            : "py-6 bg-transparent"
+        }`}
         data-testid="main-navigation"
       >
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2" data-testid="logo-link">
-            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-white font-bold text-sm md:text-lg">N</span>
+        <div className="container-custom">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <button 
+              onClick={() => scrollToSection('#hero')} 
+              className="flex items-center gap-3 group"
+              data-testid="logo-link"
+            >
+              <div className="relative">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center glow-blue">
+                  <span className="text-white font-bold text-xl">N</span>
+                </div>
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary to-accent opacity-50 blur-xl group-hover:opacity-70 transition-opacity" />
+              </div>
+              <div>
+                <span className="font-bold text-xl text-white block leading-none">Neuronova</span>
+                <span className="text-xs text-primary tracking-wider">Tech. Intelligence. Afrique.</span>
+              </div>
+            </button>
+
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => scrollToSection(link.href)}
+                  className={`nav-link ${activeSection === link.href.replace('#', '') ? 'active' : ''}`}
+                  data-testid={`nav-link-${link.name.toLowerCase()}`}
+                >
+                  {link.name}
+                </button>
+              ))}
             </div>
-            <span className="font-bold text-lg md:text-xl text-foreground tracking-tight">
-              Neuronova
-            </span>
-          </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`nav-link text-sm font-medium ${
-                  location.pathname === link.path ? "active" : ""
-                }`}
-                data-testid={`nav-link-${link.name.toLowerCase().replace(/\s+/g, '-')}`}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Link to="/contact">
+            {/* CTA Button */}
+            <div className="hidden lg:block">
               <Button 
-                className="btn-primary text-sm h-10 px-6"
+                onClick={() => scrollToSection('#contact')}
+                className="btn-primary h-12 px-8"
                 data-testid="nav-contact-btn"
               >
-                Contactez-nous
+                Nous Contacter
               </Button>
-            </Link>
-          </div>
+            </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-foreground flex-shrink-0"
-            data-testid="mobile-menu-toggle"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden p-2 text-white"
+              data-testid="mobile-menu-toggle"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
       </motion.nav>
 
@@ -94,34 +123,44 @@ export default function Navigation() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-20 left-1/2 -translate-x-1/2 w-[95%] z-40 glass rounded-2xl p-6 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 lg:hidden"
             data-testid="mobile-menu"
           >
-            <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`text-lg font-medium py-2 px-4 rounded-xl transition-colors ${
-                    location.pathname === link.path
-                      ? "bg-primary/20 text-primary"
-                      : "text-muted-foreground hover:text-foreground hover:bg-white/5"
-                  }`}
-                  data-testid={`mobile-nav-link-${link.name.toLowerCase().replace(/\s+/g, '-')}`}
+            <div className="absolute inset-0 bg-background/95 backdrop-blur-xl" onClick={() => setIsMobileMenuOpen(false)} />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25 }}
+              className="absolute right-0 top-0 bottom-0 w-80 bg-slate-900 border-l border-white/10 p-8 pt-24"
+            >
+              <div className="flex flex-col gap-6">
+                {navLinks.map((link) => (
+                  <button
+                    key={link.href}
+                    onClick={() => scrollToSection(link.href)}
+                    className={`text-left text-xl font-medium py-2 transition-colors ${
+                      activeSection === link.href.replace('#', '')
+                        ? "text-primary"
+                        : "text-slate-400 hover:text-white"
+                    }`}
+                    data-testid={`mobile-nav-link-${link.name.toLowerCase()}`}
+                  >
+                    {link.name}
+                  </button>
+                ))}
+                <Button 
+                  onClick={() => scrollToSection('#contact')}
+                  className="btn-primary mt-4"
+                  data-testid="mobile-contact-btn"
                 >
-                  {link.name}
-                </Link>
-              ))}
-              <Link to="/contact" className="mt-2">
-                <Button className="w-full btn-primary" data-testid="mobile-contact-btn">
-                  Contactez-nous
+                  Nous Contacter
                 </Button>
-              </Link>
-            </div>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
