@@ -1,69 +1,67 @@
 # Neuronova Website - Requirements & Architecture
 
 ## Original Problem Statement
-Site web CINÉMATIQUE pour Neuronova, entreprise tech spécialisée - Style inspiré du site Nova One (ntumba-tech.preview.emergentagent.com)
-
-**Tagline**: Tech. Intelligence. Afrique.
+Site web CINÉMATIQUE pour Neuronova - Tech. Intelligence. Afrique.
+Style inspiré du site Nova One (ntumba-tech.preview.emergentagent.com)
 
 ## Architecture Implemented
 
 ### Backend (FastAPI + MongoDB)
 - `GET /api/health` - Health check
-- `GET /api/services` - Liste des 6 catégories de services
+- `GET /api/services` - 6 catégories de services
 - `GET /api/testimonials` - Témoignages clients
-- `POST /api/contact` - Soumission formulaire contact
+- `POST /api/contact` - Formulaire contact
 - `POST /api/quote` - Demande de devis
 
 ### Frontend (React + Framer Motion + Tailwind)
-**Single-Page Application avec sections scrollables:**
+**Single-Page Application avec sections:**
 
-1. **HERO** - Titre NEURONOVA avec parallax, tagline "Tech. Intelligence. Afrique.", stats animés (60+ services, 50+ clients, 100+ projets, 2025)
+1. **HERO** - Logo Neuronova (brain icon), titre NEURONOVA, "INNOVATE THE FUTURE", stats animés
 
-2. **SERVICES** - 60+ services en 6 catégories avec tabs:
-   - Développement Web & Mobile (10 services)
-   - Intelligence Artificielle (10 services)
-   - Cybersécurité (10 services)
-   - Création Digitale & Branding (10 services)
-   - Consulting & Coaching (10 services)
-   - Objets Connectés & Gadgets (10 services)
+2. **DISPONIBILITÉ** - Bannière 24/7 avec statut vert, bouton "Appeler Maintenant"
 
-3. **HISTOIRE** - Fondée en 2025 à Kinshasa par David Ntumba et Jordan Leko
+3. **SERVICES** - 60+ services en 6 catégories avec images:
+   - Développement Web & Mobile
+   - Intelligence Artificielle
+   - Cybersécurité
+   - Création Digitale & Branding
+   - Consulting & Coaching
+   - Objets Connectés & Gadgets
 
-4. **MISSION** - Outils tech pour entreprises africaines
+4. **GALERIE** - 6 images tech/innovation
 
-5. **VISION** - Référence tech #1 en Afrique d'ici 2030
+5. **HISTOIRE** - Fondée 2025 à Kinshasa par David Ntumba et Jordan Leko
 
-6. **VALEURS** - 6 valeurs (Innovation, Souveraineté, Excellence, Éthique, Formation, Ambition mondiale)
+6. **MISSION/VISION/VALEURS** - Cards glassmorphism
 
-7. **FONDATEURS** - David Ntumba (CEO) et Jordan Leko (CTO) avec photos grayscale qui deviennent couleur au hover
+7. **30 PAYS AFRICAINS** - Grille avec drapeaux emoji:
+   RD Congo, Nigeria, Afrique du Sud, Kenya, Ghana, Tanzanie, Éthiopie, Côte d'Ivoire, Cameroun, Sénégal, Maroc, Algérie, Égypte, Tunisie, Rwanda, Ouganda, Angola, Mozambique, Zimbabwe, Zambie, Mali, Burkina Faso, Niger, Bénin, Togo, Gabon, Congo, Madagascar, Maurice, Botswana
 
-8. **CONTACT** - Formulaire + Google Maps + Coordonnées + WhatsApp
+8. **FONDATEURS** - David Ntumba (vraie photo) & Jordan Leko avec biographies
 
-### Design System
-- **Theme**: Dark mode cinématique (slate-950 background)
-- **Colors**: Electric Blue (#38BDF8) + Gold/Amber (#F59E0B)
-- **Fonts**: Clash Display (headings) + Manrope (body)
-- **Effects**: Glassmorphism, parallax, glow effects, animations Framer Motion
+9. **ÉQUIPE NEURONOVA** - 6 membres: Grace Mwamba, Patrick Kasongo, Marie Ilunga, Emmanuel Kabila, Sophie Lukusa, Jean-Pierre Mulamba
+
+10. **CONTACT** - Formulaire + Google Maps + WhatsApp
+
+### Assets Utilisés
+- Logo Neuronova (brain): `https://customer-assets.emergentagent.com/.../file_00000000871c71f79e6e1c736e9fbdf8.png`
+- Photo David Ntumba: `https://customer-assets.emergentagent.com/.../1755110751779.jpg`
 
 ## Tasks Completed
-- [x] Hero cinématique avec parallax et animations
-- [x] Navigation sticky avec smooth scroll
-- [x] Services avec 60+ items en 6 catégories tabulées
-- [x] Section Histoire de l'entreprise
-- [x] Cards Mission et Vision
-- [x] 6 Valeurs avec icônes
-- [x] Section Fondateurs avec photos grayscale
-- [x] Formulaire de contact fonctionnel
-- [x] WhatsApp flottant (+243 846 378 116)
-- [x] Google Maps intégré
-- [x] Footer complet
+- [x] Logo Neuronova officiel (brain icon) intégré
+- [x] Photo réelle de David Ntumba
+- [x] Section Disponibilité 24/7
+- [x] Section Galerie avec 6 images
+- [x] Section 30 Pays Africains avec drapeaux
+- [x] Section Équipe Neuronova (6 membres)
+- [x] Services avec images par catégorie
+- [x] Navigation mise à jour avec nouvelles sections
+- [x] Footer avec logo Neuronova
 - [x] Design responsive mobile
 
 ## Next Tasks
-- [ ] Ajouter clé SendGrid pour emails (SENDGRID_API_KEY dans backend/.env)
-- [ ] Ajouter vraies photos des fondateurs David Ntumba et Jordan Leko
+- [ ] Ajouter vraie photo de Jordan Leko
+- [ ] Ajouter clé SendGrid pour emails
 - [ ] Ajouter vrais liens réseaux sociaux
 - [ ] Section Blog/Actualités (optionnel)
-- [ ] Section FAQ (optionnel)
-- [ ] Animations de compteur pour les stats
-- [ ] Mode précommande pour produits/services premium
+- [ ] Section Portfolio projets réalisés
