@@ -4,12 +4,14 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 
+const NEURONOVA_LOGO = "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/1rt013g6_file_00000000871c71f79e6e1c736e9fbdf8.png";
+
 const navLinks = [
   { name: "Accueil", href: "#hero" },
   { name: "Services", href: "#services" },
   { name: "Histoire", href: "#histoire" },
-  { name: "Mission", href: "#mission" },
-  { name: "Fondateurs", href: "#fondateurs" },
+  { name: "Pays", href: "#pays" },
+  { name: "Équipe", href: "#equipe" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -70,13 +72,14 @@ export default function Navigation() {
               data-testid="logo-link"
             >
               <div className="relative">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center glow-blue">
-                  <span className="text-white font-bold text-xl">N</span>
-                </div>
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary to-accent opacity-50 blur-xl group-hover:opacity-70 transition-opacity" />
+                <img 
+                  src={NEURONOVA_LOGO} 
+                  alt="Neuronova Logo" 
+                  className="w-10 h-10 md:w-12 md:h-12 drop-shadow-lg"
+                />
               </div>
-              <div>
-                <span className="font-bold text-xl text-white block leading-none">Neuronova</span>
+              <div className="hidden sm:block">
+                <span className="font-bold text-lg md:text-xl text-white block leading-none">Neuronova</span>
                 <span className="text-xs text-primary tracking-wider">Tech. Intelligence. Afrique.</span>
               </div>
             </button>
