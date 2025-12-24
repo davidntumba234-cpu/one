@@ -3,6 +3,7 @@ import { Toaster } from "./components/ui/sonner";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
+import ChatbotJulia from "./components/ChatbotJulia";
 import HomePage from "./pages/HomePage";
 import "./App.css";
 
@@ -18,6 +19,7 @@ function App() {
         </main>
         <Footer />
         <WhatsAppButton />
+        <ChatbotJulia />
         <Toaster position="top-right" richColors />
       </BrowserRouter>
     </div>
