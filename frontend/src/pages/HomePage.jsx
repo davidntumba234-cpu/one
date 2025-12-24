@@ -547,15 +547,46 @@ export default function HomePage() {
       </section>
 
       {/* ==================== SERVICES SECTION ==================== */}
-      <section id="services" className="section-padding section-glow relative" data-testid="services-section">
-        <div className="container-custom">
+      <section id="services" className="section-padding relative overflow-hidden" data-testid="services-section">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-0 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[150px]" />
+          <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] rounded-full bg-accent/5 blur-[120px]" />
+        </div>
+        
+        {/* Floating particles */}
+        <motion.div
+          animate={{ y: [-20, 20, -20], x: [-10, 10, -10] }}
+          transition={{ duration: 8, repeat: Infinity }}
+          className="absolute top-1/4 left-1/4 w-2 h-2 rounded-full bg-primary/50"
+        />
+        <motion.div
+          animate={{ y: [20, -20, 20], x: [10, -10, 10] }}
+          transition={{ duration: 6, repeat: Infinity }}
+          className="absolute top-1/3 right-1/3 w-3 h-3 rounded-full bg-accent/50"
+        />
+        <motion.div
+          animate={{ y: [-15, 15, -15] }}
+          transition={{ duration: 7, repeat: Infinity }}
+          className="absolute bottom-1/4 left-1/3 w-2 h-2 rounded-full bg-primary/30"
+        />
+        
+        <div className="container-custom relative">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="subheading">Nos Services</span>
+            <motion.span 
+              className="subheading"
+              initial={{ opacity: 0, letterSpacing: "0.5em" }}
+              whileInView={{ opacity: 1, letterSpacing: "0.2em" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              Nos Services
+            </motion.span>
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               60+ Solutions <span className="gradient-text">Technologiques</span>
             </h2>
@@ -565,23 +596,28 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          {/* Category Tabs */}
+          {/* Category Tabs with animation */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="flex flex-wrap justify-center gap-3 mb-12"
           >
-            {serviceCategories.map((cat) => (
-              <button
+            {serviceCategories.map((cat, i) => (
+              <motion.button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
                 className={`category-tab flex items-center gap-2 ${activeCategory === cat.id ? 'active' : ''}`}
                 data-testid={`category-${cat.id}`}
               >
                 <cat.icon size={18} />
                 <span className="hidden sm:inline">{cat.name}</span>
-              </button>
+              </motion.button>
             ))}
           </motion.div>
 
@@ -589,37 +625,56 @@ export default function HomePage() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
               className="grid grid-cols-1 lg:grid-cols-3 gap-8"
             >
-              {/* Category Image */}
-              <div className="lg:col-span-1">
-                <div className="rounded-2xl overflow-hidden border border-white/10 h-full">
+              {/* Category Image with parallax effect */}
+              <motion.div 
+                className="lg:col-span-1"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <div className="rounded-2xl overflow-hidden border border-white/10 h-full relative group">
                   <img 
                     src={activeServices?.image} 
                     alt={activeServices?.name}
-                    className="w-full h-full object-cover min-h-[300px]"
+                    className="w-full h-full object-cover min-h-[300px] transform group-hover:scale-110 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      <h3 className="text-2xl font-bold text-white">{activeServices?.name}</h3>
+                      <p className="text-primary text-sm mt-1">10 services disponibles</p>
+                    </motion.div>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
               
-              {/* Services List */}
+              {/* Services List with stagger animation */}
               <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
                 {activeServices?.services.map((service, i) => (
                   <motion.div
                     key={service.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05 }}
+                    initial={{ opacity: 0, y: 30, rotateX: -15 }}
+                    animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                    transition={{ delay: i * 0.05, duration: 0.4 }}
+                    whileHover={{ scale: 1.02, x: 5 }}
                     className="service-card p-5 group cursor-pointer flex items-start gap-4"
                     data-testid={`service-${i}`}
                   >
-                    <div className={`service-icon w-10 h-10 rounded-xl bg-gradient-to-br ${activeServices.color} bg-opacity-20 flex items-center justify-center flex-shrink-0 text-white/80`}>
+                    <motion.div 
+                      className={`service-icon w-10 h-10 rounded-xl bg-gradient-to-br ${activeServices.color} bg-opacity-20 flex items-center justify-center flex-shrink-0 text-white/80`}
+                      whileHover={{ rotate: 10, scale: 1.1 }}
+                    >
                       <service.icon size={20} />
-                    </div>
+                    </motion.div>
                     <div>
                       <h4 className="font-semibold text-white mb-1 group-hover:text-primary transition-colors">
                         {service.name}
