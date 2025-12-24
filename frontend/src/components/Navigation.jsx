@@ -34,9 +34,9 @@ export default function Navigation() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-4 md:top-6 left-1/2 -translate-x-1/2 w-[95%] md:w-[90%] max-w-5xl z-50 transition-all duration-300 ${
+        className={`fixed top-4 md:top-6 left-1/2 -translate-x-1/2 w-[92%] md:w-[90%] max-w-5xl z-50 transition-all duration-300 ${
           isScrolled ? "glass shadow-2xl" : "bg-black/40 backdrop-blur-md"
-        } rounded-full border border-white/10 px-4 md:px-6 py-3 md:py-4`}
+        } rounded-full border border-white/10 px-3 sm:px-4 md:px-6 py-3 md:py-4`}
         data-testid="main-navigation"
       >
         <div className="flex items-center justify-between">
@@ -81,8 +81,9 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-foreground flex-shrink-0"
             data-testid="mobile-menu-toggle"
+            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

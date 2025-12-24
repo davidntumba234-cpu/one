@@ -67,7 +67,7 @@ export default function QuoteModal({ isOpen, onClose, preselectedService }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="modal-backdrop"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60]"
             onClick={onClose}
             data-testid="quote-modal-backdrop"
           />
@@ -78,10 +78,10 @@ export default function QuoteModal({ isOpen, onClose, preselectedService }) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none"
             data-testid="quote-modal"
           >
-            <div className="bg-background border border-white/10 rounded-3xl w-full max-w-lg p-8 relative">
+            <div className="bg-background border border-white/10 rounded-3xl w-full max-w-lg p-8 relative pointer-events-auto">
               {/* Close Button */}
               <button
                 onClick={onClose}
