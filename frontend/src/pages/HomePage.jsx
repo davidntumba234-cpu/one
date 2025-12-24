@@ -584,11 +584,11 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="rounded-xl overflow-hidden border border-white/10 aspect-video hover:border-primary/50 transition-all group"
+                className="rounded-xl overflow-hidden border border-white/10 aspect-square hover:border-primary/50 transition-all group"
               >
                 <img 
                   src={img} 
-                  alt={`Gallery ${i + 1}`}
+                  alt={`Innovation ${i + 1}`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </motion.div>
