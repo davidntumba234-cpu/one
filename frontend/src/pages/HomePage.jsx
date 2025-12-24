@@ -1313,6 +1313,133 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ==================== TESTIMONIALS SECTION ==================== */}
+      <section id="testimonials" className="section-padding relative overflow-hidden" data-testid="testimonials-section">
+        {/* Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
+        <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[150px]" />
+        
+        <div className="container-custom relative">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="subheading">Témoignages</span>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Ce Que Disent <span className="gradient-text">Nos Clients</span>
+            </h2>
+            <p className="paragraph max-w-2xl mx-auto">
+              Découvrez les retours d'expérience de nos clients satisfaits à travers l'Afrique
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {testimonials.map((testimonial, i) => (
+              <motion.div
+                key={testimonial.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="relative p-8 rounded-2xl bg-slate-900/50 border border-white/10 hover:border-primary/30 transition-all group"
+                data-testid={`testimonial-${i}`}
+              >
+                {/* Quote icon */}
+                <Quote className="absolute top-6 right-6 w-10 h-10 text-primary/20" />
+                
+                {/* Stars */}
+                <div className="flex gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, j) => (
+                    <Star key={j} size={16} className="text-accent fill-accent" />
+                  ))}
+                </div>
+                
+                {/* Content */}
+                <p className="text-slate-300 leading-relaxed mb-6">
+                  "{testimonial.content}"
+                </p>
+                
+                {/* Author */}
+                <div className="flex items-center gap-4">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full object-cover border-2 border-primary/30"
+                  />
+                  <div>
+                    <h4 className="font-semibold text-white">{testimonial.name}</h4>
+                    <p className="text-sm text-slate-400">{testimonial.role} • {testimonial.company}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <Button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="btn-primary"
+            >
+              Rejoignez nos clients satisfaits
+              <ArrowRight size={18} className="ml-2" />
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ==================== FAQ SECTION ==================== */}
+      <section id="faq" className="section-padding bg-slate-950/50" data-testid="faq-section">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="subheading">FAQ</span>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Questions <span className="gradient-text">Fréquentes</span>
+            </h2>
+            <p className="paragraph max-w-2xl mx-auto">
+              Trouvez rapidement les réponses à vos questions
+            </p>
+          </motion.div>
+
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faqData.map((faq, i) => (
+              <FAQItem key={i} faq={faq} index={i} />
+            ))}
+          </div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <p className="text-slate-400 mb-4">Vous avez d'autres questions ?</p>
+            <Button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              variant="outline"
+              className="btn-secondary"
+            >
+              Contactez-nous
+              <ChevronRight size={18} className="ml-2" />
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ==================== CONTACT SECTION ==================== */}
       <section id="contact" className="section-padding bg-slate-950/50" data-testid="contact-section">
         <div className="container-custom">
