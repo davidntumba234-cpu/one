@@ -569,7 +569,7 @@ export default function HomePage() {
             >
               <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-8">
                 <img 
-                  src="https://images.pexels.com/photos/1327880/pexels-photo-1327880.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600"
                   alt="David Ntumba"
                   className="founder-image w-full h-full object-cover"
                 />
@@ -600,7 +600,7 @@ export default function HomePage() {
             >
               <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-8">
                 <img 
-                  src="https://images.pexels.com/photos/1555177/pexels-photo-1555177.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=600"
                   alt="Jordan Leko"
                   className="founder-image w-full h-full object-cover"
                 />
