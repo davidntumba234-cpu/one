@@ -597,36 +597,68 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==================== GALLERY SECTION ==================== */}
-      <section className="py-16 bg-slate-950/50">
-        <div className="container-custom">
+      {/* ==================== GALLERY SECTION - CINEMATIC ==================== */}
+      <section className="py-24 relative overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
+        <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/10 blur-[150px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/10 blur-[120px]" />
+        
+        <div className="container-custom relative">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <span className="subheading">Galerie</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
+            <span className="subheading">Portfolio</span>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">
               L'Innovation en <span className="gradient-text">Images</span>
             </h2>
+            <p className="paragraph max-w-2xl mx-auto">
+              Découvrez nos réalisations et notre vision du futur digital
+            </p>
           </motion.div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {/* Cinematic Gallery Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {galleryImages.map((img, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 50, rotateX: -10 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="rounded-xl overflow-hidden border border-white/10 aspect-square hover:border-primary/50 transition-all group"
+                transition={{ delay: i * 0.1, duration: 0.6, ease: "easeOut" }}
+                whileHover={{ scale: 1.02, y: -10 }}
+                className="relative group cursor-pointer"
               >
-                <img 
-                  src={img} 
-                  alt={`Innovation ${i + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+                {/* Card with glow */}
+                <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50 backdrop-blur-sm group-hover:border-primary/50 transition-all duration-500">
+                  {/* Glow effect on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                  
+                  {/* Image */}
+                  <div className="aspect-square overflow-hidden">
+                    <img 
+                      src={img.url} 
+                      alt={img.title}
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    />
+                  </div>
+                  
+                  {/* Overlay with info */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-20">
+                    <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      <span className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-medium mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        {img.category}
+                      </span>
+                      <h4 className="text-xl font-bold text-white">{img.title}</h4>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Shadow glow */}
+                <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl opacity-0 group-hover:opacity-50 blur-xl transition-opacity duration-500 -z-10" />
               </motion.div>
             ))}
           </div>
