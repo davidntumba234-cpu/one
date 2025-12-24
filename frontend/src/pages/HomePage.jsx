@@ -8,7 +8,7 @@ import {
   PenTool, Video, Image, FileText, Camera, Sparkles,
   Users, Target, Lightbulb, BookOpen, TrendingUp, Presentation,
   Watch, Layers, Factory, TestTube, Truck, Home,
-  Send, Loader2, MapPin, Phone, Mail, Star, Quote
+  Send, Loader2, MapPin, Phone, Mail, Star, CheckCircle2
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
@@ -19,6 +19,10 @@ import axios from "axios";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
+// Logo URL from uploaded assets
+const NEURONOVA_LOGO = "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/1rt013g6_file_00000000871c71f79e6e1c736e9fbdf8.png";
+const DAVID_PHOTO = "https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/vsh74s0h_1755110751779.jpg";
+
 // Services data with 60+ services in 6 categories
 const serviceCategories = [
   {
@@ -26,6 +30,7 @@ const serviceCategories = [
     name: "Développement Web & Mobile",
     icon: Globe,
     color: "from-blue-500 to-cyan-400",
+    image: "https://images.unsplash.com/photo-1531482984755-b51a25295306?auto=format&fit=crop&w=800&q=80",
     services: [
       { icon: Globe, name: "Sites vitrines", desc: "Présence en ligne professionnelle" },
       { icon: Code, name: "Applications web", desc: "Solutions sur mesure" },
@@ -44,6 +49,7 @@ const serviceCategories = [
     name: "Intelligence Artificielle",
     icon: Bot,
     color: "from-purple-500 to-pink-400",
+    image: "https://images.unsplash.com/photo-1760629863094-5b1e8d1aae74?auto=format&fit=crop&w=800&q=80",
     services: [
       { icon: MessageSquare, name: "Chatbots intelligents", desc: "Agents conversationnels 24/7" },
       { icon: Smartphone, name: "IA WhatsApp pro", desc: "Automatisation WhatsApp" },
@@ -62,6 +68,7 @@ const serviceCategories = [
     name: "Cybersécurité",
     icon: Shield,
     color: "from-green-500 to-emerald-400",
+    image: "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=800",
     services: [
       { icon: Server, name: "Sécurisation serveurs", desc: "Protection infrastructure" },
       { icon: Search, name: "Audit de sécurité", desc: "Évaluation des risques" },
@@ -80,6 +87,7 @@ const serviceCategories = [
     name: "Création Digitale & Branding",
     icon: Palette,
     color: "from-orange-500 to-amber-400",
+    image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
     services: [
       { icon: PenTool, name: "Design de logos", desc: "Identité visuelle unique" },
       { icon: Palette, name: "Identité visuelle", desc: "Charte graphique complète" },
@@ -98,6 +106,7 @@ const serviceCategories = [
     name: "Consulting & Coaching",
     icon: Rocket,
     color: "from-red-500 to-rose-400",
+    image: "https://images.unsplash.com/photo-1573757056004-065ad36e2cf4?auto=format&fit=crop&w=800&q=80",
     services: [
       { icon: TrendingUp, name: "Transformation digitale", desc: "Accompagnement complet" },
       { icon: Rocket, name: "Coaching entrepreneurial", desc: "Mentorat tech" },
@@ -116,6 +125,7 @@ const serviceCategories = [
     name: "Objets Connectés & Gadgets",
     icon: Cpu,
     color: "from-cyan-500 to-blue-400",
+    image: "https://images.pexels.com/photos/8294566/pexels-photo-8294566.jpeg?auto=compress&cs=tinysrgb&w=800",
     services: [
       { icon: Watch, name: "Montres intelligentes", desc: "Conception wearables" },
       { icon: Cpu, name: "Prototypes gadgets", desc: "Développement hardware" },
@@ -136,7 +146,7 @@ const stats = [
   { value: "60+", label: "Services" },
   { value: "50+", label: "Clients" },
   { value: "100+", label: "Projets" },
-  { value: "2025", label: "Fondée" },
+  { value: "30", label: "Pays" },
 ];
 
 // Values
@@ -147,6 +157,84 @@ const values = [
   { icon: Shield, title: "Éthique", desc: "Responsabilité numérique" },
   { icon: BookOpen, title: "Formation", desc: "Partage du savoir" },
   { icon: Rocket, title: "Ambition mondiale", desc: "Ancrage local, vision globale" },
+];
+
+// African Countries with flags (30 countries)
+const africanCountries = [
+  { name: "RD Congo", code: "CD", flag: "🇨🇩" },
+  { name: "Nigeria", code: "NG", flag: "🇳🇬" },
+  { name: "Afrique du Sud", code: "ZA", flag: "🇿🇦" },
+  { name: "Kenya", code: "KE", flag: "🇰🇪" },
+  { name: "Ghana", code: "GH", flag: "🇬🇭" },
+  { name: "Tanzanie", code: "TZ", flag: "🇹🇿" },
+  { name: "Éthiopie", code: "ET", flag: "🇪🇹" },
+  { name: "Côte d'Ivoire", code: "CI", flag: "🇨🇮" },
+  { name: "Cameroun", code: "CM", flag: "🇨🇲" },
+  { name: "Sénégal", code: "SN", flag: "🇸🇳" },
+  { name: "Maroc", code: "MA", flag: "🇲🇦" },
+  { name: "Algérie", code: "DZ", flag: "🇩🇿" },
+  { name: "Égypte", code: "EG", flag: "🇪🇬" },
+  { name: "Tunisie", code: "TN", flag: "🇹🇳" },
+  { name: "Rwanda", code: "RW", flag: "🇷🇼" },
+  { name: "Ouganda", code: "UG", flag: "🇺🇬" },
+  { name: "Angola", code: "AO", flag: "🇦🇴" },
+  { name: "Mozambique", code: "MZ", flag: "🇲🇿" },
+  { name: "Zimbabwe", code: "ZW", flag: "🇿🇼" },
+  { name: "Zambie", code: "ZM", flag: "🇿🇲" },
+  { name: "Mali", code: "ML", flag: "🇲🇱" },
+  { name: "Burkina Faso", code: "BF", flag: "🇧🇫" },
+  { name: "Niger", code: "NE", flag: "🇳🇪" },
+  { name: "Bénin", code: "BJ", flag: "🇧🇯" },
+  { name: "Togo", code: "TG", flag: "🇹🇬" },
+  { name: "Gabon", code: "GA", flag: "🇬🇦" },
+  { name: "Congo", code: "CG", flag: "🇨🇬" },
+  { name: "Madagascar", code: "MG", flag: "🇲🇬" },
+  { name: "Maurice", code: "MU", flag: "🇲🇺" },
+  { name: "Botswana", code: "BW", flag: "🇧🇼" },
+];
+
+// Team members
+const teamMembers = [
+  {
+    name: "Grace Mwamba",
+    role: "Directrice Marketing",
+    image: "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=400",
+  },
+  {
+    name: "Patrick Kasongo",
+    role: "Lead Developer",
+    image: "https://images.unsplash.com/photo-1675383094481-3e2088da943b?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    name: "Marie Ilunga",
+    role: "UI/UX Designer",
+    image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400",
+  },
+  {
+    name: "Emmanuel Kabila",
+    role: "Expert Cybersécurité",
+    image: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=400",
+  },
+  {
+    name: "Sophie Lukusa",
+    role: "Chef de Projet IA",
+    image: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400",
+  },
+  {
+    name: "Jean-Pierre Mulamba",
+    role: "Ingénieur IoT",
+    image: "https://images.unsplash.com/photo-1639472628910-ef02c5404b9c?auto=format&fit=crop&w=400&q=80",
+  },
+];
+
+// Gallery images
+const galleryImages = [
+  "https://images.unsplash.com/photo-1531482984755-b51a25295306?auto=format&fit=crop&w=600&q=80",
+  "https://images.unsplash.com/photo-1689185008971-12e131e1a64a?auto=format&fit=crop&w=600&q=80",
+  "https://images.unsplash.com/photo-1760629863094-5b1e8d1aae74?auto=format&fit=crop&w=600&q=80",
+  "https://images.pexels.com/photos/8294566/pexels-photo-8294566.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/20457109/pexels-photo-20457109.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.unsplash.com/photo-1573757056004-065ad36e2cf4?auto=format&fit=crop&w=600&q=80",
 ];
 
 export default function HomePage() {
@@ -215,12 +303,27 @@ export default function HomePage() {
           style={{ opacity: heroOpacity }}
           className="container-custom relative z-10 text-center pt-24"
         >
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-8"
+          >
+            <img 
+              src={NEURONOVA_LOGO} 
+              alt="Neuronova Logo" 
+              className="w-32 h-32 md:w-40 md:h-40 mx-auto drop-shadow-2xl"
+              data-testid="hero-logo"
+            />
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-medium mb-8 backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-medium mb-6 backdrop-blur-sm">
               <Sparkles size={16} className="animate-pulse" />
               Fondée en 2025 à Kinshasa, RDC
             </span>
@@ -229,7 +332,7 @@ export default function HomePage() {
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             className="heading-cinematic text-white mb-4"
             data-testid="hero-title"
           >
@@ -240,11 +343,20 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-3xl md:text-5xl font-light text-white/80 mb-8"
+            className="text-2xl md:text-4xl font-light text-white/80 mb-4"
           >
             <span className="gradient-text font-semibold">Tech.</span>{" "}
             <span className="text-white">Intelligence.</span>{" "}
             <span className="text-accent">Afrique.</span>
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="text-sm uppercase tracking-widest text-slate-400 mb-8"
+          >
+            INNOVATE THE FUTURE
           </motion.p>
 
           <motion.p
@@ -285,7 +397,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-12 border-t border-white/10"
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-12 border-t border-white/10"
           >
             {stats.map((stat, i) => (
               <div key={i} className="stat-item" data-testid={`stat-${i}`}>
@@ -311,6 +423,51 @@ export default function HomePage() {
             <ChevronDown size={24} className="scroll-indicator" />
           </button>
         </motion.div>
+      </section>
+
+      {/* ==================== AVAILABILITY SECTION ==================== */}
+      <section className="py-12 bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10 border-y border-white/5">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row items-center justify-between gap-6"
+          >
+            <div className="flex items-center gap-4">
+              <div className="relative">
+                <div className="w-4 h-4 rounded-full bg-green-500 animate-pulse" />
+                <div className="absolute inset-0 w-4 h-4 rounded-full bg-green-500 animate-ping" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-white">Disponible 24/7</h3>
+                <p className="text-slate-400 text-sm">Support et consultation disponibles</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-6">
+              <div className="text-center">
+                <CheckCircle2 className="w-8 h-8 text-green-500 mx-auto mb-1" />
+                <p className="text-slate-400 text-xs">Devis Gratuit</p>
+              </div>
+              <div className="text-center">
+                <CheckCircle2 className="w-8 h-8 text-green-500 mx-auto mb-1" />
+                <p className="text-slate-400 text-xs">Réponse 24h</p>
+              </div>
+              <div className="text-center">
+                <CheckCircle2 className="w-8 h-8 text-green-500 mx-auto mb-1" />
+                <p className="text-slate-400 text-xs">Projets Urgents</p>
+              </div>
+            </div>
+            <Button 
+              onClick={() => window.open('https://wa.me/243846378116', '_blank')}
+              className="bg-green-600 hover:bg-green-700 text-white h-12 px-8 rounded-full"
+              data-testid="availability-cta"
+            >
+              <Phone size={18} className="mr-2" />
+              Appeler Maintenant
+            </Button>
+          </motion.div>
+        </div>
       </section>
 
       {/* ==================== SERVICES SECTION ==================== */}
@@ -352,7 +509,7 @@ export default function HomePage() {
             ))}
           </motion.div>
 
-          {/* Services Grid */}
+          {/* Services Grid with Image */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
@@ -360,47 +517,85 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4"
+              className="grid grid-cols-1 lg:grid-cols-3 gap-8"
             >
-              {activeServices?.services.map((service, i) => (
-                <motion.div
-                  key={service.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  className="service-card p-6 group cursor-pointer"
-                  data-testid={`service-${i}`}
-                >
-                  <div className={`service-icon w-12 h-12 rounded-xl bg-gradient-to-br ${activeServices.color} bg-opacity-20 flex items-center justify-center mb-4 text-white/80`}>
-                    <service.icon size={24} />
-                  </div>
-                  <h4 className="font-semibold text-white mb-2 group-hover:text-primary transition-colors">
-                    {service.name}
-                  </h4>
-                  <p className="text-slate-400 text-sm">{service.desc}</p>
-                </motion.div>
-              ))}
+              {/* Category Image */}
+              <div className="lg:col-span-1">
+                <div className="rounded-2xl overflow-hidden border border-white/10 h-full">
+                  <img 
+                    src={activeServices?.image} 
+                    alt={activeServices?.name}
+                    className="w-full h-full object-cover min-h-[300px]"
+                  />
+                </div>
+              </div>
+              
+              {/* Services List */}
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+                {activeServices?.services.map((service, i) => (
+                  <motion.div
+                    key={service.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    className="service-card p-5 group cursor-pointer flex items-start gap-4"
+                    data-testid={`service-${i}`}
+                  >
+                    <div className={`service-icon w-10 h-10 rounded-xl bg-gradient-to-br ${activeServices.color} bg-opacity-20 flex items-center justify-center flex-shrink-0 text-white/80`}>
+                      <service.icon size={20} />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1 group-hover:text-primary transition-colors">
+                        {service.name}
+                      </h4>
+                      <p className="text-slate-400 text-sm">{service.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           </AnimatePresence>
+        </div>
+      </section>
 
-          {/* Service Image */}
+      {/* ==================== GALLERY SECTION ==================== */}
+      <section className="py-16 bg-slate-950/50">
+        <div className="container-custom">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-16 rounded-3xl overflow-hidden border border-white/10"
+            className="text-center mb-12"
           >
-            <img 
-              src="https://images.pexels.com/photos/17485657/pexels-photo-17485657.png?auto=compress&cs=tinysrgb&w=1200"
-              alt="Neuronova Services"
-              className="w-full h-[400px] object-cover"
-            />
+            <span className="subheading">Galerie</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
+              L'Innovation en <span className="gradient-text">Images</span>
+            </h2>
           </motion.div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {galleryImages.map((img, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="rounded-xl overflow-hidden border border-white/10 aspect-video hover:border-primary/50 transition-all group"
+              >
+                <img 
+                  src={img} 
+                  alt={`Gallery ${i + 1}`}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ==================== HISTOIRE SECTION ==================== */}
-      <section id="histoire" className="section-padding bg-slate-950/50" data-testid="histoire-section">
+      <section id="histoire" className="section-padding" data-testid="histoire-section">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -445,8 +640,8 @@ export default function HomePage() {
                 />
               </div>
               <div className="absolute -bottom-8 -left-8 p-6 rounded-2xl glass border border-white/10">
-                <div className="stat-number text-4xl">2025</div>
-                <div className="text-slate-400 text-sm">Année de fondation</div>
+                <img src={NEURONOVA_LOGO} alt="Logo" className="w-16 h-16 mb-2" />
+                <div className="text-white font-bold">Est. 2025</div>
               </div>
             </motion.div>
           </div>
@@ -454,18 +649,8 @@ export default function HomePage() {
       </section>
 
       {/* ==================== MISSION / VISION / VALUES SECTION ==================== */}
-      <section id="mission" className="section-padding relative" data-testid="mission-section">
-        {/* Background */}
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.pexels.com/photos/10991709/pexels-photo-10991709.jpeg?auto=compress&cs=tinysrgb&w=1920"
-            alt="Background"
-            className="w-full h-full object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
-        </div>
-
-        <div className="container-custom relative">
+      <section id="mission" className="section-padding bg-slate-950/50" data-testid="mission-section">
+        <div className="container-custom">
           {/* Mission & Vision */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
             <motion.div
@@ -539,6 +724,43 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ==================== AFRICAN COUNTRIES SECTION ==================== */}
+      <section id="pays" className="section-padding" data-testid="countries-section">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="subheading">Présence Africaine</span>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Nous Servons <span className="gradient-text">30 Pays</span> Africains
+            </h2>
+            <p className="paragraph max-w-3xl mx-auto">
+              Notre ambition est de couvrir tout le continent africain avec nos solutions technologiques.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-10 gap-4">
+            {africanCountries.map((country, i) => (
+              <motion.div
+                key={country.code}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.02 }}
+                className="p-4 rounded-xl border border-white/5 bg-slate-900/30 text-center hover:border-primary/30 hover:bg-primary/5 transition-all group cursor-pointer"
+                data-testid={`country-${country.code}`}
+              >
+                <span className="text-3xl md:text-4xl block mb-2">{country.flag}</span>
+                <span className="text-xs text-slate-400 group-hover:text-white transition-colors">{country.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ==================== FOUNDERS SECTION ==================== */}
       <section id="fondateurs" className="section-padding bg-slate-950/50" data-testid="founders-section">
         <div className="container-custom">
@@ -552,10 +774,6 @@ export default function HomePage() {
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Les Visionnaires de <span className="gradient-text">Neuronova</span>
             </h2>
-            <p className="paragraph max-w-2xl mx-auto">
-              Découvrez les esprits audacieux qui ont créé NEURONOVA pour révolutionner 
-              le paysage technologique africain.
-            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 max-w-5xl mx-auto">
@@ -567,9 +785,9 @@ export default function HomePage() {
               className="founder-card group"
               data-testid="founder-david"
             >
-              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-8">
+              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-8 border border-white/10">
                 <img 
-                  src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src={DAVID_PHOTO}
                   alt="David Ntumba"
                   className="founder-image w-full h-full object-cover"
                 />
@@ -585,9 +803,6 @@ export default function HomePage() {
                 stratégie de croissance, il est le moteur derrière la mission de l'entreprise 
                 de révolutionner le paysage tech africain.
               </p>
-              <blockquote className="mt-6 pl-6 border-l-2 border-primary italic text-slate-400">
-                "Notre ambition est de prouver que l'excellence technologique peut naître en Afrique."
-              </blockquote>
             </motion.div>
 
             {/* Jordan Leko */}
@@ -598,7 +813,7 @@ export default function HomePage() {
               className="founder-card group"
               data-testid="founder-jordan"
             >
-              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-8">
+              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden mb-8 border border-white/10">
                 <img 
                   src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=600"
                   alt="Jordan Leko"
@@ -616,19 +831,58 @@ export default function HomePage() {
                 Avec plusieurs années d'expérience dans le développement de solutions tech, 
                 il dirige la vision technique de Neuronova.
               </p>
-              <blockquote className="mt-6 pl-6 border-l-2 border-accent italic text-slate-400">
-                "Chaque ligne de code que nous écrivons construit l'avenir numérique de l'Afrique."
-              </blockquote>
             </motion.div>
           </div>
         </div>
       </section>
 
+      {/* ==================== TEAM SECTION ==================== */}
+      <section id="equipe" className="section-padding" data-testid="team-section">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="subheading">Notre Équipe</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              L'Équipe <span className="gradient-text">Neuronova</span>
+            </h2>
+            <p className="paragraph max-w-2xl mx-auto">
+              Une équipe de talents passionnés par la technologie et dédiés à votre succès.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {teamMembers.map((member, i) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="text-center group"
+                data-testid={`team-member-${i}`}
+              >
+                <div className="relative aspect-square rounded-2xl overflow-hidden mb-4 border border-white/10 group-hover:border-primary/50 transition-all">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  />
+                </div>
+                <h4 className="font-semibold text-white text-sm mb-1">{member.name}</h4>
+                <p className="text-slate-400 text-xs">{member.role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ==================== CONTACT SECTION ==================== */}
-      <section id="contact" className="section-padding relative" data-testid="contact-section">
-        <div className="absolute inset-0 section-glow" />
-        
-        <div className="container-custom relative">
+      <section id="contact" className="section-padding bg-slate-950/50" data-testid="contact-section">
+        <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -639,10 +893,6 @@ export default function HomePage() {
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Parlons de Votre <span className="gradient-text">Projet</span>
             </h2>
-            <p className="paragraph max-w-2xl mx-auto">
-              Prêt à transformer votre entreprise? Contactez-nous dès aujourd'hui 
-              pour discuter de vos besoins.
-            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -783,6 +1033,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
+            <img src={NEURONOVA_LOGO} alt="Neuronova" className="w-24 h-24 mx-auto mb-8" />
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Prêt à rejoindre la révolution <span className="gradient-text">tech africaine</span>?
             </h2>
