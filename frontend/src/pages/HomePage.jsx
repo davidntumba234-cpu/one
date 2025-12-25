@@ -1599,8 +1599,8 @@ export default function HomePage() {
                 <div className="p-6 rounded-2xl border border-white/10 bg-slate-900/50">
                   <Mail size={24} className="text-primary mb-4" />
                   <h4 className="font-semibold text-white mb-2">Email</h4>
-                  <a href="mailto:contact@neuronova.com" className="text-slate-400 text-sm hover:text-primary transition-colors">
-                    contact@neuronova.com
+                  <a href="mailto:serviceneuronova@gmail.com" className="text-slate-400 text-sm hover:text-primary transition-colors">
+                    serviceneuronova@gmail.com
                   </a>
                 </div>
                 <div className="p-6 rounded-2xl border border-white/10 bg-slate-900/50">

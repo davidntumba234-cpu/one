@@ -19,7 +19,7 @@ const INITIAL_MESSAGE = {
 const BOT_RESPONSES = {
   "En savoir plus sur vos services": "Nous offrons 60+ services dans 6 catégories : Développement Web & Mobile, Intelligence Artificielle, Cybersécurité, Design & Branding, Consulting Tech, et Objets Connectés. Quel domaine vous intéresse ?",
   "Demander un devis": "Parfait ! Pour un devis personnalisé, veuillez remplir notre formulaire de contact ou nous appeler au +243 846 378 116. Notre équipe vous répondra sous 24h.",
-  "Parler à un conseiller": "Nos conseillers sont disponibles du Lundi au Vendredi, 8h-18h. Vous pouvez nous joindre via WhatsApp au +243 846 378 116 ou par email à contact@neuronova.com",
+  "Parler à un conseiller": "Nos conseillers sont disponibles du Lundi au Vendredi, 8h-18h. Vous pouvez nous joindre via WhatsApp au +243 846 378 116 ou par email à serviceneuronova@gmail.com",
   "Horaires d'ouverture": "Nous sommes ouverts du Lundi au Vendredi de 8h00 à 18h00. Pour les urgences, notre support WhatsApp est disponible 24/7.",
   "default": "Merci pour votre message ! Un membre de notre équipe vous contactera très bientôt. En attendant, n'hésitez pas à explorer nos services ou nous appeler au +243 846 378 116."
 };

@@ -205,8 +205,8 @@ export default function Footer() {
                 </div>
                 <div>
                   <span className="text-white text-sm font-medium block">Email</span>
-                  <a href="mailto:contact@neuronova.com" className="text-slate-400 hover:text-primary text-sm transition-colors">
-                    contact@neuronova.com
+                  <a href="mailto:serviceneuronova@gmail.com" className="text-slate-400 hover:text-primary text-sm transition-colors">
+                    serviceneuronova@gmail.com
                   </a>
                 </div>
               </li>

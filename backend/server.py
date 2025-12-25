@@ -105,7 +105,7 @@ def send_notification_email(to_email: str, subject: str, content: str):
 
 def send_contact_notification(contact: ContactMessage):
     """Send notification email for new contact message"""
-    admin_email = os.environ.get('ADMIN_EMAIL', 'contact@neuronova.com')
+    admin_email = os.environ.get('ADMIN_EMAIL', 'serviceneuronova@gmail.com')
     subject = f"Nouveau message de contact - {contact.name}"
     content = f"""
     <html>
@@ -128,7 +128,7 @@ def send_contact_notification(contact: ContactMessage):
 
 def send_quote_notification(quote: QuoteRequest):
     """Send notification email for new quote request"""
-    admin_email = os.environ.get('ADMIN_EMAIL', 'contact@neuronova.com')
+    admin_email = os.environ.get('ADMIN_EMAIL', 'serviceneuronova@gmail.com')
     subject = f"Nouvelle demande de devis - {quote.service}"
     content = f"""
     <html>
