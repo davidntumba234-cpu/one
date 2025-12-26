@@ -212,7 +212,7 @@ const faqData = [
   },
   {
     question: "Quel est le délai de réalisation d'un projet ?",
-    answer: "Les délais dépendent du type de projet : un site vitrine peut être livré en 2-4 semaines, une application web en 2-3 mois, un projet d'IA en 1-3 mois. Nous établissons un planning détaillé dès le début du projet."
+    answer: "Nos délais sont optimisés pour une livraison rapide : un site vitrine peut être livré en 72h, une application web en 168h (7 jours), un projet d'IA en 2 semaines. Nous établissons un planning détaillé dès le début du projet."
   },
   {
     question: "Proposez-vous un support après la livraison ?",
@@ -1317,7 +1317,7 @@ export default function HomePage() {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <img 
-                  src="https://images.pexels.com/photos/5060987/pexels-photo-5060987.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src="https://customer-assets.emergentagent.com/job_029cb03c-63b5-427f-af8c-afed8e65308a/artifacts/i8lwmfnc_1000158766.jpg"
                   alt="Jordan Leko"
                   className="founder-image w-full h-full object-cover"
                 />
